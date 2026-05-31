@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "*",
+      "Bash(kill 73864)",
+      "Bash(node /tmp/check-page.mjs)",
+      "Bash(node -e \"const p = require\\('./node_modules/@react-three/fiber/package.json'\\); console.log\\(p.version, p.peerDependencies\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(kill 76624)",
+      "Bash(node /tmp/check-page2.mjs)",
+      "Bash(node -e \"const r = require\\('./node_modules/next/dist/compiled/react'\\); console.log\\('next compiled react version:', r.version, 'has SECRET_INTERNALS:', !!r.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED\\)\")"
+    ]
+  }
+}

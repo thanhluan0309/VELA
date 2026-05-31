@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Satoshi font loaded via <link> in layout.tsx head */
+
+:root {
+  --bg: #FAF7F2;
+  --ink: #161616;
+  --accent: #FF5B4A;
+  --soft-1: #FFD66B;
+  --soft-2: #FFB3C1;
+  --soft-3: #A8DADC;
+  --ink-muted: #5c5c5c;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-satoshi, 'Satoshi', system-ui, sans-serif);
+  overflow-x: hidden;
+  cursor: none; /* Custom cursor active */
+}
+
+/* Hide cursor on touch devices */
+@media (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* Grain/noise overlay — adds texture to the flat bg */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* Accessibility — disable heavy animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Hero words: always visible, no transform — overrides inline opacity:0 */
+  .hero-word {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Hero meta (subtitle + CTA) */
+  .hero-meta {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Canvas sits behind everything */
+#r3f-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Main content overlay */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography utilities */
+.font-display {
+  font-family: var(--font-fraunces, 'Fraunces', Georgia, serif);
+}
+
+.text-ink-muted {
+  color: var(--ink-muted);
+}
+
+/* Overflow mask for stagger reveals */
+.overflow-clip {
+  overflow: hidden;
+}
