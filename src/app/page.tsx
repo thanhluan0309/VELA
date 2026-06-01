@@ -1,5 +1,6 @@
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { FloatingActions } from "@/components/ui/FloatingActions";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { ManifestoSection } from "@/components/sections/ManifestoSection";
 import { CollectionSection } from "@/components/sections/CollectionSection";
@@ -19,8 +20,8 @@ export default function Home() {
       {/* Page content */}
       <main>
         <HeroSection />
-        <CollectionSection />
         <LookbookSection />
+        <CollectionSection />
         <StatsSection />
         <ManifestoSection />
       </main>
